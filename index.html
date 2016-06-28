@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>OUT-OF-OFFICE GENERATOR</title>
+    <link rel="stylesheet" href="components/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/custom.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+      
+    <script src="app.js"></script>
+    <script src="SharedPropertiesService.js"></script>
+    <script src="ordinalDateFilter.js"></script>
+    <script src="inputView/input.js"></script>
+    <script src="vacationView/vacation.js"></script>
+    <script src="notAtOfficeView/notAtOffice.js"></script>
+    <script src="remoteView/remote.js"></script>
+  </head>
+  <body ng-app="outOfOfficeApp">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#/">OUT-OF-OFFICE GENERATOR</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right"></ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="centering text-center">
+                <div ng-view></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

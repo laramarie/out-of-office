@@ -1,0 +1,67 @@
+<div ng-controller="inputController">
+    <h1>Generate your OUT-OF-OFFICE message</h1>
+    <div>
+        <h3>Select your type of OUT-OF-OFFICE message</h3>
+        <select ng-model="userInput.absenceType">
+            <option selected>vacation</option>
+            <option>not at office</option>
+            <option>remote work</option>
+        </select>
+    </div>
+    <div>
+        <h3>Personal information</h3>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Your name</span>
+            <input type="text" class="form-control" ng-model="userInput.name" placeholder="John Doe" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <form>
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Start date of absence:</h3>
+          <input type="date" ng-model="userInput.startDate"><br>
+        </div>
+        <div class="col-lg-6">
+          <h3>End date of absence:</h3>
+          <input type="date" ng-model="userInput.endDate" min="{{userInput.startDate}}"><br>
+        </div>
+      </div>
+    </form>
+    <div ng-if="userInput.absenceType != 'vacation' && userInput.absenceType != ''">
+      <h3>Information about your office</h3>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Location of the office</span>
+          <input type="text" class="form-control" ng-model="userInput.office" placeholder="Munich" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group" ng-if="userInput.absenceType === 'remote work'">
+          <span class="input-group-addon" id="basic-addon1">Location of the remote office</span>
+          <input type="text" class="form-control" ng-model="userInput.remoteOffice" placeholder="Berlin" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <form ng-if="userInput.absenceType === 'vacation'">
+        <div class="row">
+            <h3>Add your contacts</h3>
+            <div class="col-lg-6">
+                <p><a class="btn btn-primary btn-xs" ng-click="addContact()" role="button">+ contact</a></p>
+            </div>
+            <div class="col-lg-6">
+                <p><a class="btn btn-danger btn-xs" ng-click="removeContact()" role="button">- contact</a></p>
+            </div>
+              <div ng-repeat="contact in userInput.contacts track by $index">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="name">Name</span>
+                        <input type="text" class="form-control" placeholder="Jane Doe" aria-describedby="name" ng-model="contact.name">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="email">@</span>
+                        <input type="email" class="form-control" placeholder="jane@doe.com" aria-describedby="email" ng-model="contact.email">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p><a class="btn btn-primary btn-lg" role="button" ng-href="{{ userInput.name === '' ? '' : getPath() }}" ng-disabled="userInput.name === ''" ng-click="notify()">Create E-Mail</a></p>
+</div>

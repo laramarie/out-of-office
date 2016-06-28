@@ -1,0 +1,12 @@
+<div ng-controller="notAtOfficeController">
+    <h2>Here is your OUT-OF-OFFICE message!</h2>
+    <p></p>
+    <p>Thanks a lot you for getting in touch with me!</p> 
+
+    <p>From {{ userInput.startDate | ordinalDate: 'MMMM doo' }}<span ng-if="userInput.startDate.getFullYear() != userInput.endDate.getFullYear()">{{ userInput.startDate | ordinalDate: ', yyyy' }}</span>
+        - {{ userInput.endDate | ordinalDate: 'MMMM doo, yyyy' }}, I will not be at the office in {{ userInput.office }}, with irregular access to my email. I will answer your request as soon as possible. I apologize for any inconvenience. </p>
+
+    <p>Best wishes, <br />
+        {{ userInput.name }}</p>
+    <p><a class="btn btn-primary btn-lg" href="#/input" role="button">Create new message</a></p>
+</div>
