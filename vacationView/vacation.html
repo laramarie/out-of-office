@@ -6,7 +6,7 @@
     <p>From {{ userInput.startDate | ordinalDate: 'MMMM doo' }}<span ng-if="userInput.startDate.getFullYear() != userInput.endDate.getFullYear()">{{ userInput.startDate | ordinalDate: ', yyyy' }}</span>
         - {{ userInput.endDate | ordinalDate: 'MMMM doo, yyyy' }}, I will be on vacation, without access to my email. I will answer your request shortly after I get back. </p>
 
-    <p ng-if="userInput.contacts[0].name != ''">In case of urgent matters please contact {{ contactList() }}. </p>
+    <p ng-if="userInput.contacts.count > 0">In case of urgent matters please contact {{ contactList() }}. </p>
 
     <p>Best wishes, <br />
         {{ userInput.name }}</p>
